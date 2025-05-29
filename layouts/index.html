@@ -8,31 +8,89 @@
 
   <div class="container">
     <!-- Header/Intro Part -->
-      <div class="row justify-content-center">
-            <div class="col-lg-12 text-center">
-              <img src="images/medEv-pullFigure.svg" alt="Logo" style="width: 500px; height: auto; margin-bottom: 10px;">
-              <h1 class="mt-0">MedEvidence</h1>
-            </div>
-
-        <div class="col-lg-9 col-xl-8 text-center">
-           <p class="lead">Can Large Language Models Match the Conclusions of Systematic Reviews?</p>
-        </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-12 text-center">
+        <img src="/images/medEv-pullFigure.svg" alt="Logo" style="width: 500px; height: auto; margin-bottom: 10px;">
+        <h1 class="mt-0">MedEvidence</h1>
       </div>
 
+      <div class="col-lg-9 col-xl-8 text-center">
+        <p class="lead">Can Large Language Models Match the Conclusions of Systematic Reviews?</p>
+      </div>
+    </div>
+
     <!-- Links -->
-      <div class="row justify-content-center">
-          <div class="col-lg-9 col-xl-8 text-center">
-            <!-- <a class="btn btn-primary btn-lg px-4 mb-2" href="https://arxiv.org/pdf/2501.07171" role="button" style="background-color: #1E90FF; color: white; border: none;">Paper</a> -->
-            <a class="btn btn-primary btn-lg px-4 mb-2" href="https://github.com/zy-f/med-evidence" role="button" style="background-color: #1E90FF; color: white; border: none;">GitHub</a>
-            <a class="btn btn-primary btn-lg px-4 mb-2" href="https://huggingface.co/datasets/clcp/med-evidence" role="button" style="background-color: #1E90FF; color: white; border: none;">Dataset</a>
-          </div>
-        </div> 
-        <!-- Main Body -->
+    <div class="row justify-content-center">
+      <div class="col-lg-9 col-xl-8 text-center">
+        <!-- <a class="btn btn-primary btn-lg px-4 mb-2" href="https://arxiv.org/pdf/2501.07171" role="button" style="background-color: #1E90FF; color: white; border: none;">Paper</a> -->
+        <a class="btn btn-primary btn-lg px-4 mb-2" href="https://github.com/zy-f/med-evidence" role="button" style="background-color: #1E90FF; color: white; border: none;">GitHub</a>
+        <a class="btn btn-primary btn-lg px-4 mb-2" href="https://huggingface.co/datasets/clcp/med-evidence" role="button" style="background-color: #1E90FF; color: white; border: none;">Dataset</a>
+      </div>
+    </div> 
+  </div>  
+  <!-- Main Body -->
+    <!-- abstract -->
+    <div style="text-align: justify; text-justify: inter-word;">
+      Systematic reviews (SR), in which experts summarize and analyze evidence across individual studies to provide insights on a specialized topic, are a cornerstone for evidence-based clinical decision-making, research, and policy. Given the exponential growth of scientific articles, there is growing interest in using large language models (LLMs) to automate SR generation. However, the ability of LLMs to critically assess evidence and reason across multiple documents to provide recommendations at the same proficiency as domain experts remains poorly characterized. We therefore ask:\textbf{ Can LLMs match the conclusions of systematic reviews written by clinical experts when given access to the same studies?} To explore this question, we present \dsetName{}, a benchmark pairing findings from 100 SRs with the studies they are based on. We benchmark 24 LLMs on MedEvidence, including reasoning, non-reasoning, medical specialist, and models across varying sizes (from 7B-700B). Through our systematic evaluation, we find that reasoning does not necessarily improve performance, larger models do not consistently yield greater gains, and knowledge-based fine-tuning degrades accuracy on MedEvidence. Instead, most models exhibit similar behavior: performance tends to degrade as token length increases, their responses show overconfidence, and, contrary to human experts, all models show a lack of scientific skepticism toward low-quality findings. These results suggest that more work is still required before LLMs can reliably match the observations from expert-conducted SRs, even though these systems are already deployed and being used by clinicians. The visualization at the top of this page highlights the key challenges of our dataset.
+    </div>
+
+    <!-- dataset curation -->
+    <div class="row justify-content-center  d-md-block">
+      <img src="/images/medEv-datasetCreation.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto; ">
+      <div style="text-align: justify; text-justify: inter-word;">
+      </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 1: </strong> MedEvidence curation pipeline. (1) We extract systematic reviews conducted by Cochrane that are indexed in PubMed, filtering for only reviews where all sourced studies are indexed in PubMed (with at least an abstract available). (2) Human annotators review the SR abstract and examine the "Main Results" subsection for statements that statistically compare an intervention with a control group. Conclusions are converted into question-answer pairs answers. (3) Human annotators parse the "Analysis" section of the SR's appendix to identify the cited studies relevant to the conclusion. (4) Annotators verify that the available content from the sourced studies (abstract or full-text) provides sufficient numerical or statistical detail to answer the question.</p>
+      </div>
+    </div>
+
+    <!-- dataset description -->
+    <h2>Dataset Description</h2>
+    <div style="text-align: justify; text-justify: inter-word;">
+      <strong> MedEvidence Statistics: </strong> 
+      MedEvidence contains a total of 284 systematically human-curated questions derived from 100 systematic reviews with 329 referenced individual articles, of which 114 have full-text available. The benchmark covers topics from 10 medical specialties (e.g. public health, surgery, family medicine, etc.); five different outcome effects (higher, lower, no difference, uncertain effect, insufficient data); and three broad levels of concordance between the source papers and the correct answer (full agreement, no agreement, mixed agreement). The distributions of these key characteristics is shown in Figure 2 below.
+    </div>
+    <!-- figure -->
+      <img src="/images/datasetDistrib.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
+      <div style="text-align: justify; text-justify: inter-word;"> 
+        </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 2: </strong> Key statistical characteristics of the questions in MedEvidence. (a) shows the dataset distribution stratified by medical specialty. (b) presents the distribution stratified by outcome effect. (c) shows the distribution stratified by source concordance with the expert-assessed treatment outcome effect (i.e. the correct answer).</p>
+      </div>
+    <!-- end figure -->
+    <div style="text-align: justify; text-justify: inter-word;">
+      <strong> Data Format: </strong>
+      MedEvidence is grouped by question; each question includes core data for evaluation, metadata, as well as the content details for the relevant sources. The core data consists of: a human-generated question of the form “Is [quantity of medical outcome] higher, lower, or the same when
+      comparing [intervention] to [control]?"; the taxonomized answer to the question (higher, lower, no difference, uncertain effect, insufficient data); and the list of relevant studies (sources) used by the review authors to perform the analysis, identified by their unique PubMed IDs. We additionally provide the following metadata: the systematic review from which the question was extracted; the publication year of the systematic review; the authors’ confidence in their analysis, also referred to as the 'evidence certainty' (high, moderate, low, very low, or n/a if not provided); a Boolean identification of whether full-text is available and needed to answer the question; the exact fractional source concordance; and the medical specialty associated with the question. Separately, for each source, we provide the unique PubMed ID, title, publication date if available, and content (full-text if available, abstract otherwise).
+    </div>
+
+    <!-- experiments -->
+    <h2>Benchmarking LLM Performance</h2>
+    <div style="text-align: justify; text-justify: inter-word;">
+      <strong> LLM Selection: </strong>
+      We selected 24 LLMs across different configurations, including a variety of sizes (from 7B to 671B), reasoning and non-reasoning capabilities, commercial and non-commercial licensing, and medical fine-tuning. This selection includes GPT-o1, DeepSeek R1, OpenThinker2, GPT-4.1, Qwen3, Llama 4, HuatuoGPT-o1, OpenBioLLM, and more.
+    </div>
+
+    <div style="text-align: justify; text-justify: inter-word;">
+      <strong> Prompting Setup: </strong>
+      We evaluated all models in a zero-shot setting, prompting them to first provide a rationale for their answer, followed by an 'answer' field containing only one option from the list of five valid treatment outcome effects (higher, lower, no difference, uncertain effect, or insufficient data). We then utilized two setups. First, to assess the models' "natural" behavior, we used a <strong>basic</strong> setup, providing minimal guidance in the prompt beyond specifying the required response format, and supplying the abstracts or full text of the relevant studies as context. However, LLMs may not natively understand how to handle multiple levels of evidence, which can lead to unfair evaluations. Thus, we used an <strong>expert-guided</strong> prompt setup that instructs the LLM to summarize the study design and study population, and to assign a grade of evidence based on established definitions of grades of recommendation. For both cases, if the input exceeded the LLM's context window, we used multi-step refinement (via LangChain's RefineDocumentsChain) to iteratively refine the answer based on a sequence of article chunks.
+    </div>
+
+    <div style="text-align: justify; text-justify: inter-word;">
+      <strong> LLM Evaluation: </strong> 
+      Model performance was evaluated using accuracy based on an exact match between the answer field and the ground truth. Model outputs were lower-cased and stripped of whitespace before comparison. If no 'answer' field was provided, or if its content was not an exact rule-based match with the correct answer, the output was deemed incorrect. Confidence intervals (CIs) were calculated via bootstrap (95%, N=1000).
+    </div>
+    <!-- figure 3 -->
+      <img src="/images/overallAccuracy_avgRecall.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
+      <div style="text-align: justify; text-justify: inter-word;"> 
+        </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 3: </strong> (a) Average model accuracy (and 95% CI) on MedEvidence, overlaid on the percentage of questions where the model provided valid output (additional details in Appendix Section E). (b) Average recall by ground truth treatment outcome effect, aggregated across all models (with overall 95% interval).</p>
+      </div>
+    <!-- end figure -->
+    <!-- figure -->
+      <img src="/images/certainty_and_sla.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
+      <div style="text-align: justify; text-justify: inter-word;"> 
+        </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 4: </strong> (a) Accuracy as a function of evidence certainty shows a monotonically increasing trend. (b) Accuracy as a function of source concordance, defined as the percentage of relevant sources that agree with the final systematic review (SR) answer, also exhibits a monotonically increasing trend.</p>
+      </div>
+    <!-- end figure -->
 
 
-         
-
-
+    <h2>Findings</h2>
 
 </section>
 {{ end }}
