@@ -1,4 +1,7 @@
-# Deploy Doks to GitHub Pages
+# MedEvidence Website
+Site hosted at https://zy-f.github.io/website-med-evidence/
+
+<!-- # Deploy Doks to GitHub Pages
 
 Example repo showing how to publish your Doks site to GitHub Pages — automatically
 
@@ -99,5 +102,5 @@ jobs:
 Now, after every push to the master branch, your site will be updated — automatically.
 
 Dont forget to update parameters at: 
-```uBench-website/config/_default/params.toml```
-
+```./config/_default/params.toml```
+ -->
