@@ -1,0 +1,76 @@
+# Meta Data for SEO
+
+## Homepage
+title = "BIOMEDICA"
+titleSeparator = ":"
+titleAddition = "An Open Biomedical Image-Caption Archive with Vision-Language Models Derived from Scientific Literature"
+description = ""
+
+## Open Graph
+images = ["MEDALIGN_twitter_card.png"]
+ogLocale = "en_US"
+domainTLD = "doks.netlify.app"
+titleHome = "BIOMEDICA Project Website"
+
+## Twitter Cards
+twitterSite = ""
+twitterCreator = ""
+
+## JSON-LD
+# schemaType = "Person"
+schemaType = "Organization"
+schemaName = "Doks"
+schemaAuthor = "Henk Verlinde"
+schemaAuthorTwitter = ""
+schemaAuthorLinkedIn = ""
+schemaAuthorGitHub = "https://minwoosun.github.io/biomedica-website/"
+schemaLocale = "en-US"
+schemaLogo = "logo-doks.png"
+schemaLogoWidth = 512
+schemaLogoHeight = 512
+schemaImage = "doks.png"
+schemaImageWidth = 1280
+schemaImageHeight = 640
+schemaTwitter = ""
+schemaLinkedIn = ""
+schemaGitHub = "https://github.com/minwoosun/biomedica/"
+schemaSection = "blog"
+
+## Sitelinks Search Box
+siteLinksSearchBox = false
+
+## Chrome Browser
+themeColor = "#fff"
+
+# Images
+quality = 85
+bgColor = "#fff"
+landscapePhotoWidths = [900, 800, 700, 600, 500]
+portraitPhotoWidths = [800, 700, 600, 500]
+lqipWidth = "20x"
+
+# Footer
+footer = "Powered by <a href=\"https://www.netlify.com/\">Netlify</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
+
+# Feed
+copyRight = "Copyright (c) 2025 Min Woo Sun"
+
+# Alert
+alert = false
+alertText = ""
+
+# Edit Page
+docsRepo = ""
+editPage = false
+
+[options]
+  lazySizes = true
+  clipBoard = true
+  instantPage = true
+  flexSearch = false
+  darkMode = true
+  bootStrapJs = true
+  breadCrumb = false
+  highLight = true
+  kaTex = false
+  collapsibleSidebar = false

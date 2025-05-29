@@ -1,0 +1,382 @@
+{{ define "main" }}
+
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,500i,700,700i|Noto+Sans:400,400i,700,700i|Source+Code+Pro&amp;subset=latin-ext">
+<!-- <link rel="stylesheet" href="https://wilds.stanford.edu/doks-theme/assets/css/style.css"> -->
+
+<section class="section hero-subheader container-fluid mt-n3 pb-3">
+
+  <div class="container">
+    <!-- First Row -->
+      <div class="row justify-content-center">
+            <div class="col-lg-12 text-center">
+              <img src="images/datamap.jpg" alt="Logo" style="width: 500px; height: auto; margin-bottom: 10px;">
+              <h1 class="mt-0">BIOMEDICA</h1>
+            </div>
+
+        <div class="col-lg-9 col-xl-8 text-center">
+           <p class="lead">An Open <strong>Biomed</strong>ical <strong>I</strong>mage-<strong>C</strong>aption <strong>A</strong>rchive with Vision-Language Models Derived from Scientific Literature</p>
+           <!-- <p class="lead">An Open Biomedical Image-Caption Archive with Vision-Language Models Derived from Scientific Literature</p> -->
+        </div>
+      </div>
+
+    <!-- Second  Row -->
+      <div class="row justify-content-center">
+          <div class="col-lg-9 col-xl-8 text-center">
+            <a class="btn btn-primary btn-lg px-4 mb-2" href="https://arxiv.org/pdf/2501.07171" role="button" style="background-color: #1E90FF; color: white; border: none;">Paper</a>
+            <a class="btn btn-primary btn-lg px-4 mb-2" href="https://github.com/minwoosun/biomedica-etl" role="button" style="background-color: #1E90FF; color: white; border: none;">GitHub</a>
+            <!-- <a class="btn btn-primary btn-lg px-4 mb-2" href="https://github.com/minwoosun/pmc-oa" role="button" style="background-color: #1E90FF; color: white; border: none;">GitHub: Model Training</a> -->
+            <!-- <a class="btn btn-primary btn-lg px-4 mb-2" href="https://github.com/minwoosun/pmc-oa" role="button" style="background-color: #1E90FF; color: white; border: none;">GitHub: VLM</a> -->
+            <a class="btn btn-primary btn-lg px-4 mb-2" href="https://huggingface.co/BIOMEDICA" role="button" style="background-color: #1E90FF; color: white; border: none;">Data</a>
+            <!-- <a class="btn btn-primary btn-lg px-4 mb-2" href="https://huggingface.co/BIOMEDICA" role="button" style="background-color: #1E90FF; color: white; border: none;">Contact us!</a> -->
+          </div>
+        </div>
+
+        <section class="section section-sm">
+
+            <div class="row justify-content-center text-center">
+              <div class="col-lg-5">
+                <h2 class="h4"><a href="https://huggingface.co/BIOMEDICA" style="color: #1E90FF;">Dataset access</a></h2>
+                <p>Access the data via <a href="https://huggingface.co/BIOMEDICA" style="color: #1E90FF;"> HF Datasets 🤗</a>  
+                
+              
+              </div>
+              <div class="col-lg-5">
+                <h2 class="h4"><a href="https://github.com/minwoosun/biomedica-etl/discussions" style="color: #1E90FF;">Contact us</a></h2>
+                <p><a href="https://github.com/minwoosun/biomedica-etl/discussions" style="color: #1E90FF;">Contact us</a> with questions and suggestions!
+                </p>
+              </div>
+              <div class="col-lg-5">
+                <h2 class="h4"><a href="https://colab.research.google.com/drive/10h2onUZXIRoYyD2FpFqm2FAoUyF2QQka?usp=sharing" style="color: #1E90FF;">Colab Tutorial</a></h2>
+                <p> Learn how to use our dataset in <a href="https://colab.research.google.com/drive/10h2onUZXIRoYyD2FpFqm2FAoUyF2QQka?usp=sharing" style="color: #1E90FF;">colab!</a></p>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+ 
+        <!-- Third  Row -->
+        <div style="text-align: justify; text-justify: inter-word;">
+            </p style="text-align: justify; text-justify: inter-word;">
+            The development of vision-language models (VLMs) is driven by large-scale and diverse multi-modal datasets. However, progress toward generalist biomedical VLMs is limited by the lack of annotated, publicly accessible datasets across biology and medicine. Existing efforts are limited to narrow domains, missing  the full diversity of biomedical knowledge encoded in scientific literature. To address this gap, we introduce BIOMEDICA: a scalable, open-source framework to extract, annotate, and serialize the entirety of the PubMed Central Open Access subset into an easy-to-use, publicly accessible dataset. Our framework produces a comprehensive archive with over 24 million unique image-text pairs from over 6 million articles. Metadata and expert-guided annotations are additionally provided. 
+
+            We demonstrate the utility and accessibility of our resource by releasing BMCA-CLIP, a suite of CLIP-style models continuously pre-trained on BIOMEDICA dataset via streaming (eliminating the need to download 27TB of data locally). On average, our models achieve state-of-the-art performance across 40 tasks — spanning pathology, radiology, ophthalmology, dermatology, surgery, molecular biology, parasitology, and cell biology — excelling in zero-shot classification with 6.56% average improvement (as high as 29.8% and 17.5% in dermatology and ophthalmology, respectively) and stronger image-text retrieval while using 10x less compute.
+
+            The visualization at the top of this page highlights the overlap with <a href="https://www.cell.com/patterns/fulltext/S2666-3899(24)00076-X" target="_blank">Landscape of Biomedical Research</a>, showcasing the broad biomedical coverage of our dataset.
+            </p>
+        </div>
+
+        <!-- Fourth Row -->
+        <div class="row justify-content-center  d-md-block">
+              <img src="/images/data_workflow.png" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto; ">
+              <div style="text-align: justify; text-justify: inter-word;">
+              </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 1: </strong> (A) BIOMEDICA curation pipeline: In the Extract phase, metadata, text (caption, figure reference, full-text), and images are sourced and processed from PMC-OA. In the Transform phase, DINO v2 features are generated for each image, followed by clustering using PCA and k-means. Clinicians and scientists annotate these clusters, identifying 12 global concepts and 170 local concepts, which are then propagated across all images. Finally, in the Load phase, the dataset is made available on Hugging Face with the listed features. (B) We train a suite of CLIP-based using the BIOMEDICA dataset uploaded on Hugging Face via streaming. We evaluate the models on 40 different biomedical tasks.  </p>
+              </div>
+        </div>
+
+
+        <div class="row justify-content-center  d-md-block">
+
+
+          <!-- <img src="https://raw.githubusercontent.com/Ale9806/uBench-website/main/images/generation.png" alt="Rectangle"  class="border-0" >
+          <div style="text-align: justify; text-justify: inter-word;"> 
+          </p style="text-align: justify; text-justify: inter-word;"><strong>Figure 2:</strong> Micro-Bench construction protocol. Perception dataset <span style="color: blue;">(left)</span>: first taxonomize use cases
+                                                                          across subcellular, cellular, and tissue-level applications and collect representative datasets spanning
+                                                                          multiple imaging modalities to test those scenarios. Next, datasets are converted to a common
+                                                                          format, and the ontological information extracted from their metadata is standardized. Aided by
+                                                                          this information, experts synthesize VQA pairs designed to test perception ability. Cognition
+                                                                          dataset <span style="color: red;">(right)</span>: First, domain experts use an interactive web application to upload their images and
+                                                                          corresponding open-ended VQA pairs. Next, GPT-4 transforms the VQA pairs into a close-ended
+                                                                          multiple-choice format. All GPT-4 generations are reviewed by experts before being incorporated
+                                                                          into the cognition dataset. </p>
+          </div> -->
+      
+     
+          <h2>Dataset Statistics</h2>
+            <div style="text-align: justify; text-justify: inter-word;"> 
+            </p style="text-align: justify; text-justify: inter-word;"> <strong>PubMed Central Open Acces:</strong> The PubMed Central (PMC) Open Access (OA) Subset is a
+            publicly accessible collection of full-text scholarly articles
+            hosted by the National Center for Biotechnology Information (NCBI). This subset contains articles that have been
+            made available under various open-access licenses. It covers a wide range of disciplines within biomedical and life
+            sciences, providing rich content that includes research articles, reviews, case reports, and clinical trials. As of 2024,
+            over six million articles are available, with tens of thousands
+            of new articles added annually, reflecting the continuous
+            contributions of researchers worldwide.</p>
+            </div>
+
+  
+            <div style="text-align: justify; text-justify: inter-word;"> 
+            </p style="text-align: justify; text-justify: inter-word;"> <strong> BIOMEDICA Statistics: </strong> 
+            A total of 6,042,494 articles are downloaded from the NCBI server through FTP. 
+            Within this collection, 5,050,473 articles have at least one image, while 992,021 
+            articles are text-only. All articles have a corresponding nXML that contains 
+            the full text. From the full-text articles and associated image files, we collected 
+            a total of 24,070,000 unique image-caption pairs and extracted 30,711,542 figure reference paragraphs. On average, each article contains 4.9 images and each image is 
+            accompanied by 1.6 figure references.
+            
+            Caption token lengths range from a single token to 12,389 tokens, with a median length 
+            of 64 tokens, indicating that most captions are concise but can vary substantially. 
+            In contrast, figure reference paragraphs—which describe or contextualize images within the article—tend to be longer, with token counts reaching up to 699,117 tokens and a median of 
+            338 tokens, showing the level of detail often required for clinical or scientific context. 
+            Overall, the text content includes a total of 2.84 x 10^9 tokens for captions, 
+            and 6.65 x 10^10 tokens for the full text, illustrating the extensive scale 
+            of language data within the dataset.
+            
+            For images, the median image width and height are 709 and 476 pixels, respectively. 
+            However, the wide range in both dimensions, from pixel up to tens of thousands 
+            (with a maximum width of 52,490 pixels and height of 65,081 pixels). 
+            This variability is due to the presence of both thumbnails or low-resolution 
+            images and high-resolution images, such as full-page figures or detailed illustrations. </p>
+           </div>
+            
+          <img src="/images/taxonomy_pie.png" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
+          <div style="text-align: justify; text-justify: inter-word;"> 
+          </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 2: </strong> Visualization of the concept breakdown in the BIOMEDICA taxonomy. The inner level of the pie chart reflects the panel type 
+          and the outer level reflects the global concept of individual taxonomies, and the word cloud reflects the fine-grained local concept proportions for the most frequent concepts.</p>
+          </div>
+          <div style="text-align: justify; text-justify: inter-word;"> 
+          </p style="text-align: justify; text-justify: inter-word;"> <strong> Rich Image Taxonomy: </strong> 
+          The image taxonomy comprises 12 global concepts and 170 local concepts 
+          as shown in Figure 2. A total of 23,271,916 images are covered by this 
+          taxonomy. Biomedical (Microscopy and Clinical Imaging) images represent 
+          17% of the total dataset. Notably, biomedical images are more common 
+          in noncommercial publications, where they make up 13% of the images, 
+          compared to 5% and 6% in commercial and other license categories, 
+          respectively. The "Plots and Charts" category holds the largest 
+          count across all source types, with a total of over 13 million images, 
+          which is 57% of the images, demonstrating that graphical data 
+          representations are common across scientific literature. 
+          
+          Each global concept is further divided into local concepts to capture 
+          the specific image types within broader categories. "Plots and Charts" 
+          has the most detailed taxonomy, with 96 local concepts, representing data 
+          visualizations like bar charts, line graphs, and heatmaps. "Clinical Imaging" 
+          follows with 34 local concepts, covering a range of imaging techniques 
+          including MRI, CT, and ultrasound. 
+           </p>
+         </div>
+          
+
+          <div style="text-align: justify; text-justify: inter-word;"> 
+          <img src="/images/taxonomy_cluster.png" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
+            </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 3: </strong> 
+            Taxonomy of clusters with example images. Images resized to a uniform width of 10cm and height of 1cm. Column widths adjusted to fit the page.
+            </p>
+          </div>
+
+          <div style="text-align: justify; text-justify: inter-word;"> 
+          </p style="text-align: justify; text-justify: inter-word;"> <strong> Concept labeling: </strong> 
+          We developed an AI-assisted pipeline to categorize similar concepts within PMC-OA. In summary, this process involves four stages: First, we define and organize similar images in clusters applying unsupervised clustering on image content, second, a group of 2 clinicians and 1 scientist use these clusters and taxonomies to create a hierarchical taxonomy for PMC-OA, then a group of  2 clinicians and 6 scientists use this taxonomy to annotate each cluster. A majority vote approach is used to select the final cluster annotations. Lastly, this metadata is propagated to each cluster instance. 
+
+          We used DINOv2 (ViT-L/14 distilled) to generate a 1024-dimensional vector for each image in PMC-OA . However, directly clustering such high-dimensional data can lead to poor performance due to the "curse of dimensionality", where the increased sparsity in high-dimensional spaces reduces the reliability of distance-based measures like those used in K-means clustering.
+          
+          To address this, we applied PCA (Principal Component Analysis) to reduce the dimensionality of the embeddings. A scree plot analysis was performed to determine the minimum number of principal components required to retain 99% of the data variance. 25 principal components were sufficient to achieve this threshold. Consequently, we selected PCA (n=25) to transform the data before applying K-means clustering. Examples of these clusters are shown in Figure 3. 
+           </p>
+         </div>
+          
+
+        <h2>Continual Pretraining Experiments</h2>
+
+        <p style="text-align: justify; text-justify: inter-word;"> 
+          We examine the effects of continual pretraining on the full set of 27M image-caption pairs and compare these insights to (2) topic balancing, (3) dataset refining, and (4) robust fine-tuning. This topic exploration is non-exhaustive and it is specifically designed to utilize the supplementary annotations, metadata, and features that we have made available to the community.
+          </p>
+          
+          <p style="text-align: justify; text-justify: inter-word;"> 
+          For all experiments, we use a batch size of 1024 per GPU, distributed across 4 GPUs with a batch accumulation frequency of 2, yielding an effective batch size of 8192. As a result, each model processes the same number of data points at each training step. We use a learning rate of 1e-6 paired and 32-bit floating-point precision. All of our experiments are trained via streaming, eliminating the need for local storage of the 30 TB dataset.
+          </p>
+          
+          <p style="text-align: justify; text-justify: inter-word;"> 
+          1. <strong>Continual pretaining on full dataset (24M)</strong>
+          In this experiment, we continually pretrain a CLIP (ViT-L-14) model on the complete dataset of 24,076,288 pairs. We train for 6 epochs. This experiment serves as a baseline  to compare additional data mixture strategies. 
+          </p>
+          
+          <p style="text-align: justify; text-justify: inter-word;"> 
+          2. <strong>Concept-Balancing (8M)</strong>
+          For this experiment, we continually pretrain a CLIP (ViT-L-14) model on 8,404,992 pairs, balancing all topics. To accomplish this over represented topics (e.g. plots) are dropped. By restricting the over-representation of any single category, this experiment targets potential biases introduced by data imbalance. We train for 16 epochs. 
+          </p>
+          
+          <p style="text-align: justify; text-justify: inter-word;"> 
+          3. <strong>Concept-Filtering (6M)</strong>
+          % Train Model on Only Biomedical Images
+          In this experiment, we continually pretrain a CLIP (ViT-L-14) model using a filtered dataset of 6,602,752 image-caption pairs. This dataset includes only concepts within clinical and scientific imaging, immunoassays, illustrative diagrams, chemical structures, maps, tools and materials, and hand-drawn/screen-based visuals (excluding tables, figures, and scientific equations). We train the model for 21 epochs.
+          </p>
+          
+          <p style="text-align: justify; text-justify: inter-word;"> 
+          4. <strong>Robust Fine-tuning</strong>
+          This experiment explores model merging by using a convex combination of the weights from a base model and its continually pretrained counterpart, as described in <a href="https://arxiv.org/abs/2109.01903">Wortsman et al. (2021)</a>, using the package introduced in <a href="https://arxiv.org/abs/2407.01791">Lozano et al. (2024)</a>. The goal is to determine whether combining the models' parameters leads to improved performance compared to individual models.
+          </p>
+
+        <h2>Benchmarking</h2>
+
+      <!-- <p style="text-align: justify; text-justify: inter-word;">  -->
+      
+        <p style="text-align: justify; text-justify: inter-word;"> 
+        The primary objective of large-scale continual pretraining on the BIOMEDICA dataset is to enhance the model's generalization capabilities across a wide array of downstream tasks within biomedicine. 
+        To evaluate the effectiveness of continual pretraining on BIOMEDICA, we repurposed 39 established biomedical classification tasks and leveraged a new retrieval dataset based on Flicker, for a total of 40 datasets.
+       </p>
+        
+       <p style="text-align: justify; text-justify: inter-word;"> 
+        <strong>Image classification</strong>
+        To construct a comprehensive classification benchmark, we take the union of evaluations from prior work (BioMedCLIP and PMC-CLIP) and supplement it with underrepresented domains. 
+        For each individual task, classes are converted into captions (see Supplements), providing two variations per class. This evaluation set spans multiple fields: pathology (11 tasks), radiology (3 tasks), ophthalmology (1 task), dermatology (1 task), surgery (10 tasks), biology (9 tasks) and general microscopy (4). 
+        The biology and pathology tasks are sourced from meta-datasets, including Micro-Bench <a href="https://arxiv.org/abs/2407.01791">Lozano et al. (2024)</a>; ophthalmology and dermatology tasks from MedMnist (<a href="https://www.nature.com/articles/s41597-022-01721-8">Yang et al. (2023)</a>); radiology tasks from RSNA (<a href="https://pubs.rsna.org/doi/10.1148/ryai.2019180041">Shih et al. (2019)</a>), and CheXpert (<a href="https://arxiv.org/abs/1901.07031">Irvin et al. (2019)</a>); and surgery tasks from the Dresden surgical anatomy dataset (<a href="https://pubmed.ncbi.nlm.nih.gov/36635312/">Carstens et al. (2023)</a>). 
+
+        The image classification benchmark is subdivided into two splits, similar to <a href="https://arxiv.org/abs/2407.01791">Lozano et al. (2024)</a>. 
+        The first split, general bioimaging classification, includes tasks related to distinguishing abnormalities, making diagnoses, and identifying structures. 
+        This subset covers 35 tasks.
+      </p>
+
+      <p style="text-align: justify; text-justify: inter-word;"> 
+        <strong>Retrieval task selection</strong> 
+        Since PMC-15M is not publicly available at the time of this manuscript, we cannot split BIOMEDICA dataset into the similar train and test sets as prior work while simultaneously ensuring a balanced number of concepts within each split. Therefore, we assess retrieval performance using a new collection of 7K high-quality, open-source biomedical image-caption pairs from Flickr. This benchmark spans concepts across pathology, radiology, biology, dermatology, and surgery.
+      </p>
+
+      <p style="text-align: justify; text-justify: inter-word;"> 
+        <strong>Metrics</strong> Classification tasks are evaluated using average accuracy across two caption variations, while retrieval tasks are measured using retrieval at 1, 10, and 100. Despite variations in the number of classes and samples across tasks, summary statistics are reported as unweighted averages, ensuring each task is treated with equal importance.
+        
+      </p>
+
+
+      <!-- </p> -->
+      <img src="/images/classification.png" alt="Rectangle"  class="border-0" >
+      <div style="text-align: justify; text-justify: inter-word;"> 
+      </p style="text-align: justify; text-justify: inter-word;"> <strong> Table 1: </strong> <strong>General Biomedical Imaging Classification</strong>  Average zero-shot performance across 35 classification tasks (from 21 unique datasets) stratified by domain and task. We show results for three variants of our model, including continual pretraining on all of BIOMEDICA, a subset after concept-filtering (CF), and a subset after concept-balancing (CB). Models with indication WiSE-FT are merged counterparts as described in <a href="https://arxiv.org/abs/2109.01903">Wortsman et al. (2021)</a>. <strong>Bold</strong> indicates best performance, <u>underline</u> indicates second best performance. </p>
+    </div>
+  
+  
+    <img src="/images/retrieval.png" alt="Rectangle" class="border-0" style="display: block; margin: auto; width: 65%; height: auto;">
+    <div style="text-align: center; margin-top: 10px;">
+        <strong>Table 2:</strong> <strong>Top-K retrieval performance on BioMed-Flickr</strong>. 
+        <strong>Bold</strong> indicates best performance, <u>underline</u> indicates second best performance.
+    </div>
+
+
+      <h2>Findings</h2> 
+
+
+  <p style="text-align: justify; text-justify: inter-word;"> 
+    <strong>Concept Filtering leads to better performance across zero-shot classification and retrieval tasks</strong>
+    Intuitively, when compared to other continual pretraining strategies within BMCA-CLIP models, filtering the dataset (e.g., dropping over-represented topics like plots and tables) yields the best average performance across general biomedical imaging classification tasks with respect to concept balancing (better 80% of the time) and full-dataset pretraining (better 90% of the time). Additionally, concept filtering leads to superior performance compared to concept balancing or full-dataset pretraining in image-to-text and text-to-image retrieval.
+Indeed, within this training strategy, 48% of the data mixture corresponds to clinical imaging and microscopy. 
+  </p>
+
+  <p style="text-align: justify; text-justify: inter-word;"> 
+    <strong>Models Trained on the BIOMEDICA Dataset Lead to State-of-the-Art Zero-Shot Performance</strong> To address catastrophic forgetting
+    Compared to prior work, models trained on the BIOMEDICA dataset yield better average performance in classification and retrieval tasks. BMCA-CLIP-CF outperforms PMC-CLIP in all tasks, achieving a +24.67% improvement in general biomedical imaging classification tasks, with a minimum gap of +5.13% in ultrasound (radiology) and a maximum gap of +53.22% in dermatology. Similarly, a +39.46% improvement is observed in microscopy composition tasks. Additionally, a recall@100 gap of +36.91% and +34.6% is observed in image-to-text and text-to-image retrieval, respectively. Similarly, BMCA-CLIP-CF outperforms BioMedCLIP in 8/10 general biomedical imaging classification subsets. yielding an average improvement of 6.56%. For individual tasks, BMCA-CLIP-CF achieves the highest differential performance w.r.t BioMedCLIP in dermatology (+29.8%), ophthalmology (+17.5%), breast ultrasound (+8.01%) and non-neo histopathology (+6.98%) and marginal better performance in microscopy composition identification and all retrial evaluations. It is noteworthy to highlight that BMCA-CLIP-CF achieves these results while using 10× less compute and 2.5× less data. 
+  </p>
+
+  <p style="text-align: justify; text-justify: inter-word;"> 
+  <strong>Robust Fine-tuning complements model performance in a subset of tasks</strong>
+  Another advantage of our setup (continual pretraining) is its capability to improve individual task performance without further training. For example, in microscopy composition identification tasks, WiSE-FT improves BMCA-CLIP-CF by 8.16%, further increasing the performance gap with respect to BioMedCLIP. Similarly, WiSE-FT enhances BMCA-CLIP-CF's performance in 5/10 general biomedical imaging classification tasks (see Figure 4. Notably, BMCA-CLIP-CF increases the performance gap w.r.t BioMedCLIP in X-ray radiology (+15.46%), breast ultrasound (+11.22%), and surgery (+8.78%), complementing weakness in the original BMCA-CLIP-CF model. However, this gain in performance comes at the cost of lower performance in other subtasks, such as -7.56% in dermatology and marginally worse retrieval performance.
+</p>
+
+<img src="/images/best_models_radar_plot.png" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 50%; height: auto;" >
+<div style="text-align: center; margin-top: 10px;">
+  <strong>Figure 4:</strong> Average model performance of best BMCA-CLIP models compared to prior work.
+</div>
+
+  <!-- <img src="https://raw.githubusercontent.com/Ale9806/uBench-website/main/images/robust.png" alt="Rectangle"  class="border-0" >
+  <div style="text-align: justify; text-justify: inter-word;"> 
+  </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure : </strong> Fine-tuning and microscopy perception generalization on Micro-Bench . Base CLIP models
+  <span style="color:blue;">(blue)</span> are fine-tuned to PLIP and QuiltNet using pathology data mixtures <span style="color:darkorchid;">(pink)</span>. Weight-merging base
+  models with their corresponding fine-tuned models <span style="color:goldenrod;">(olive)</span> improves specialist zero-shot performance
+  on Micro-Bench coarse-grained (Left) and fined-grained (Right) perception.</p>
+  </div> -->
+
+  <h2>Conclusion</h2> 
+
+  <div style="text-align: justify; text-justify: inter-word;"> 
+    <p style="text-align: justify; text-justify: inter-word;"> 
+    In this work, we present BIOMEDICA, a framework for converting PMC-OA into the largest deep-learning-ready dataset, 
+    comprising 24 million image-caption pairs with 27 metadata fields derived from scientific literature. 
+    We demonstrate the utility of the BIOMEDICA dataset by continually pretraining CLIP-style models, 
+    fully leveraging its expert-guided annotations, metadata, and streaming capabilities. 
+    Our results showcase the effectiveness of this resource, even in low-memory and GPU-constrained scenarios.
+    </p>
+
+    <p style="text-align: justify; text-justify: inter-word;"> 
+    Our models achieve state-of-the-art zero-shot classification performance using prior open-source tools and models, 
+    while utilizing 10x less compute and 2.5x less data—underscoring the importance of large-scale annotated open datasets. 
+    The BIOMEDICA framework, dataset, models, and large-scale evaluation serve as a foundation for advancing 
+    vision-language research and applications in scientific and biomedical domains. We release all our contributions under a 
+    permissive license to facilitate broader use and further development.
+    </p>
+    
+  </div> 
+
+  </div>
+     
+
+
+         
+
+
+
+</section>
+{{ end }}
+
+{{ define "sidebar-prefooter" }}
+<!-- <section class="section section-sm">
+
+
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-5">
+        <h2 class="h4"><a href="docs/dataset/access">Download instructions</a></h2>
+        <p>We will make the full dataset available to
+          researchers under a standard research
+          DUA in coming months. See <a href="docs/dataset/access">here</a> for more details.
+        </p>
+        <a class="btn btn-primary btn-lg px-4 mb-2" href="https://medalign-4b245550a5e9.herokuapp.com/"
+          role="button">Get access</a>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="h4"><a href="https://medalign-4b245550a5e9.herokuapp.com/">Contribute instructions</a></h2>
+        <p>Click <a href="https://medalign-4b245550a5e9.herokuapp.com/">here</a> to Share your email, contribute an instruction, and you'll be the first to know when the full dataset becomes
+          available.</p>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="h4"><a href="https://github.com/som-shahlab/medalign/discussions">Contact us</a></h2>
+        <p><a href="https://github.com/som-shahlab/medalign/discussions">Contact us</a> if you have any questions, feedback, or suggestions for MedAlign, or if you want to contribute!
+        </p>
+        <a class="btn btn-primary btn-lg px-4 mb-2" href="https://medalign-4b245550a5e9.herokuapp.com/"
+          role="button">Team</a>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+
+
+
+
+
+<div class="container">
+<div class="row justify-content-center">
+  <h3>Citation</h3>
+  <pre id="arxiv-citation">
+  @misc{lozano2025biomedicaopenbiomedicalimagecaption,
+      title={BIOMEDICA: An Open Biomedical Image-Caption Archive, Dataset, and Vision-Language Models Derived from Scientific Literature}, 
+      author={Alejandro Lozano and Min Woo Sun and James Burgess and Liangyu Chen and Jeffrey J Nirschl and Jeffrey Gu and Ivan Lopez and Josiah Aklilu and Austin Wolfgang Katzer and Collin Chiu and Anita Rau and Xiaohan Wang and Yuhui Zhang and Alfred Seunghoon Song and Robert Tibshirani and Serena Yeung-Levy},
+      year={2025},
+      eprint={2501.07171},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2501.07171}, 
+}
+</pre>
+</div>
+</div>
+{{ end }}
+
+{{ define "sidebar-footer" }}
+<!-- <section class="section section-sm container-fluid">
+  <div class="row justify-content-center text-center">
+    <div class="col-lg-9">
+      {{- .Content -}}
+    </div>
+  </div>
+</section> -->
+{{ end }}
