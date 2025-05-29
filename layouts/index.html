@@ -10,7 +10,7 @@
     <!-- Header/Intro Part -->
     <div class="row justify-content-center">
       <div class="col-lg-12 text-center">
-        <img src="images/medEv-pullFigure.svg" alt="Logo" style="width: 500px; height: auto; margin-bottom: 10px;">
+        <img src="images/medEv-pullFigure.svg" alt="Logo" style="width: 700px; height: auto; margin-bottom: 10px;">
         <h1 class="mt-0">MedEvidence</h1>
       </div>
 
@@ -76,7 +76,7 @@
       <strong> LLM Evaluation: </strong> 
       Model performance was evaluated using accuracy based on an exact match between the answer field and the ground truth. Model outputs were lower-cased and stripped of whitespace before comparison. If no 'answer' field was provided, or if its content was not an exact rule-based match with the correct answer, the output was deemed incorrect. Confidence intervals (CIs) were calculated via bootstrap (95%, N=1000).
     </div>
-    <!-- figure 3 -->
+    <!-- figure -->
       <img src="images/overallAccuracy_avgRecall.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
       <div style="text-align: justify; text-justify: inter-word;"> 
         </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 3: </strong> (a) Average model accuracy (and 95% CI) on MedEvidence, overlaid on the percentage of questions where the model provided valid output (additional details in Appendix Section E). (b) Average recall by ground truth treatment outcome effect, aggregated across all models (with overall 95% interval).</p>
@@ -89,9 +89,26 @@
       </div>
     <!-- end figure -->
 
-
+    <!-- discussion -->
     <h2>Findings</h2>
+    <div style="text-align: justify; text-justify: inter-word;">
+      As shown in Figure 3(a), even frontier models such as DeepSeek V3 and GPT-4.1 demonstrate relatively low average accuracy of 62.40% (56.35, 68.45) and 60.40% (54.30, 66.50), respectively—far from saturating our benchmark. We identify four key factors that influence model performance on our benchmark: (1) token length, (2) dependency on treatment outcomes, (3) inability to assess the quality of evidence, and (4) lack of skepticism toward low-quality findings. Additionally, we found that (5) medical fine-tuning does not improve performance, and (6) model size shows diminishing returns beyond 70 billion parameters. Here, we highlight two of these key findings:
+    </div>
+    <div style="text-align: justify; text-justify: inter-word;">
+      <strong> Model performance is dependent on treatment outcome effect. </strong> 
+      Figure 3(b) shows the per-class recall stratified by treatment outcome effect. Overall, all models perform best on questions where the correct answer corresponds to higher or lower effects—cases where a strong stance can be taken. They are slightly less successful on no difference and insufficient data questions, where a definitive conclusion is available but there is no clear preference for either treatment. Performance is lowest on the most ambiguous class, uncertain effect. Notably, we find that models are generally reluctant to express uncertainty, often committing to a more certain outcome that appears plausible instead.
+    </div>
+    <div style="text-align: justify; text-justify: inter-word;">
+      <strong> Model performance improves with increasing levels of evidence. </strong> 
+      We leverage the evidence certainty levels reported by experts in each systematic review (SR). As shown in Figure 4(a), the overall ability of models to match SR conclusions improves as the level of evidence increases. We therefore explore whether model performance is also associated with the level of source concordance. As shown in Figure 4(b), models' ability to match human conclusions increases as the proportion of sources agreeing with the correct answer increases (e.g., DeepSeek V3 achieves 92.45% accuracy at 100% source agreement vs. 41.21% at 0% source agreement). This suggests that, unlike human experts, current LLMs struggle to critically evaluate the quality of evidence and to remain skeptical of results. We observe that this behavior persists even when models are prompted (using the expert-guided prompt) to consider study design, population, and level of evidence.
+    </div>
 
+    <!-- conclusion -->
+    <h2>Conclusion</h2>
+    <div style="text-align: justify; text-justify: inter-word;">
+      Benchmarks drive advancements by providing a standard to measure progress and enabling researchers to identify weaknesses in current approaches. While LLMs are already deployed for scientific synthesis, our understanding of their failure modes still requires broader investigation. In this work, we present MedEvidence, a benchmark derived from gold-standard medical systematic reviews. We use MedEvidence to characterize the performance of 24 LLMs and find that, unlike humans, LLMs struggle with uncertain evidence and cannot exhibit skepticism when studies present design flaws. Consequently, given the same studies, frontier LLMs fail to match the conclusions of systematic reviews in at least 37% of evaluated cases. We release MedEvidence to enable researchers to track progress.
+    </div>
+    
 </section>
 {{ end }}
 
