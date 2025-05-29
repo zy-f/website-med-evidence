@@ -1,2 +1,2 @@
-baseurl = ""
-canonifyURLs = false
+baseurl = "https://zy-f.github.io/website-med-evidence/"
+canonifyURLs = true

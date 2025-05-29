@@ -1,16 +1,16 @@
 # Meta Data for SEO
 
 ## Homepage
-title = "BIOMEDICA"
+title = "MedEvidence"
 titleSeparator = ":"
-titleAddition = "An Open Biomedical Image-Caption Archive with Vision-Language Models Derived from Scientific Literature"
+titleAddition = "Can Large Language Models Match the Conclusions of Systematic Reviews?"
 description = ""
 
 ## Open Graph
-images = ["MEDALIGN_twitter_card.png"]
+# images = ["MEDALIGN_twitter_card.png"]
 ogLocale = "en_US"
 domainTLD = "doks.netlify.app"
-titleHome = "BIOMEDICA Project Website"
+titleHome = "MedEvidence Project Website"
 
 ## Twitter Cards
 twitterSite = ""
@@ -23,7 +23,7 @@ schemaName = "Doks"
 schemaAuthor = "Henk Verlinde"
 schemaAuthorTwitter = ""
 schemaAuthorLinkedIn = ""
-schemaAuthorGitHub = "https://minwoosun.github.io/biomedica-website/"
+schemaAuthorGitHub = "https://zy-f.github.io/website-med-evidence/"
 schemaLocale = "en-US"
 schemaLogo = "logo-doks.png"
 schemaLogoWidth = 512
@@ -33,7 +33,7 @@ schemaImageWidth = 1280
 schemaImageHeight = 640
 schemaTwitter = ""
 schemaLinkedIn = ""
-schemaGitHub = "https://github.com/minwoosun/biomedica/"
+schemaGitHub = "https://zy-f.github.io/med-evidence/"
 schemaSection = "blog"
 
 ## Sitelinks Search Box
@@ -53,7 +53,7 @@ lqipWidth = "20x"
 footer = "Powered by <a href=\"https://www.netlify.com/\">Netlify</a>, <a href=\"https://gohugo.io/\">Hugo</a>, and <a href=\"https://getdoks.org/\">Doks</a>"
 
 # Feed
-copyRight = "Copyright (c) 2025 Min Woo Sun"
+copyRight = "Copyright (c) 2025 Christopher Polzak"
 
 # Alert
 alert = false
