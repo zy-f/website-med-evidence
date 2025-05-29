@@ -10,7 +10,7 @@
     <!-- Header/Intro Part -->
     <div class="row justify-content-center">
       <div class="col-lg-12 text-center">
-        <img src="/images/medEv-pullFigure.svg" alt="Logo" style="width: 500px; height: auto; margin-bottom: 10px;">
+        <img src="images/medEv-pullFigure.svg" alt="Logo" style="width: 500px; height: auto; margin-bottom: 10px;">
         <h1 class="mt-0">MedEvidence</h1>
       </div>
 
@@ -31,12 +31,12 @@
   <!-- Main Body -->
     <!-- abstract -->
     <div style="text-align: justify; text-justify: inter-word;">
-      Systematic reviews (SR), in which experts summarize and analyze evidence across individual studies to provide insights on a specialized topic, are a cornerstone for evidence-based clinical decision-making, research, and policy. Given the exponential growth of scientific articles, there is growing interest in using large language models (LLMs) to automate SR generation. However, the ability of LLMs to critically assess evidence and reason across multiple documents to provide recommendations at the same proficiency as domain experts remains poorly characterized. We therefore ask:\textbf{ Can LLMs match the conclusions of systematic reviews written by clinical experts when given access to the same studies?} To explore this question, we present \dsetName{}, a benchmark pairing findings from 100 SRs with the studies they are based on. We benchmark 24 LLMs on MedEvidence, including reasoning, non-reasoning, medical specialist, and models across varying sizes (from 7B-700B). Through our systematic evaluation, we find that reasoning does not necessarily improve performance, larger models do not consistently yield greater gains, and knowledge-based fine-tuning degrades accuracy on MedEvidence. Instead, most models exhibit similar behavior: performance tends to degrade as token length increases, their responses show overconfidence, and, contrary to human experts, all models show a lack of scientific skepticism toward low-quality findings. These results suggest that more work is still required before LLMs can reliably match the observations from expert-conducted SRs, even though these systems are already deployed and being used by clinicians. The visualization at the top of this page highlights the key challenges of our dataset.
+      Systematic reviews (SR), in which experts summarize and analyze evidence across individual studies to provide insights on a specialized topic, are a cornerstone for evidence-based clinical decision-making, research, and policy. Given the exponential growth of scientific articles, there is growing interest in using large language models (LLMs) to automate SR generation. However, the ability of LLMs to critically assess evidence and reason across multiple documents to provide recommendations at the same proficiency as domain experts remains poorly characterized. We therefore ask:\textbf{ Can LLMs match the conclusions of systematic reviews written by clinical experts when given access to the same studies?} To explore this question, we present MedEvidence, a benchmark pairing findings from 100 SRs with the studies they are based on. We benchmark 24 LLMs on MedEvidence, including reasoning, non-reasoning, medical specialist, and models across varying sizes (from 7B-700B). Through our systematic evaluation, we find that reasoning does not necessarily improve performance, larger models do not consistently yield greater gains, and knowledge-based fine-tuning degrades accuracy on MedEvidence. Instead, most models exhibit similar behavior: performance tends to degrade as token length increases, their responses show overconfidence, and, contrary to human experts, all models show a lack of scientific skepticism toward low-quality findings. These results suggest that more work is still required before LLMs can reliably match the observations from expert-conducted SRs, even though these systems are already deployed and being used by clinicians. The visualization at the top of this page highlights the key challenges of our dataset.
     </div>
 
     <!-- dataset curation -->
     <div class="row justify-content-center  d-md-block">
-      <img src="/images/medEv-datasetCreation.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto; ">
+      <img src="images/medEv-datasetCreation.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto; ">
       <div style="text-align: justify; text-justify: inter-word;">
       </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 1: </strong> MedEvidence curation pipeline. (1) We extract systematic reviews conducted by Cochrane that are indexed in PubMed, filtering for only reviews where all sourced studies are indexed in PubMed (with at least an abstract available). (2) Human annotators review the SR abstract and examine the "Main Results" subsection for statements that statistically compare an intervention with a control group. Conclusions are converted into question-answer pairs answers. (3) Human annotators parse the "Analysis" section of the SR's appendix to identify the cited studies relevant to the conclusion. (4) Annotators verify that the available content from the sourced studies (abstract or full-text) provides sufficient numerical or statistical detail to answer the question.</p>
       </div>
@@ -49,7 +49,7 @@
       MedEvidence contains a total of 284 systematically human-curated questions derived from 100 systematic reviews with 329 referenced individual articles, of which 114 have full-text available. The benchmark covers topics from 10 medical specialties (e.g. public health, surgery, family medicine, etc.); five different outcome effects (higher, lower, no difference, uncertain effect, insufficient data); and three broad levels of concordance between the source papers and the correct answer (full agreement, no agreement, mixed agreement). The distributions of these key characteristics is shown in Figure 2 below.
     </div>
     <!-- figure -->
-      <img src="/images/datasetDistrib.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
+      <img src="images/datasetDistrib.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
       <div style="text-align: justify; text-justify: inter-word;"> 
         </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 2: </strong> Key statistical characteristics of the questions in MedEvidence. (a) shows the dataset distribution stratified by medical specialty. (b) presents the distribution stratified by outcome effect. (c) shows the distribution stratified by source concordance with the expert-assessed treatment outcome effect (i.e. the correct answer).</p>
       </div>
@@ -77,13 +77,13 @@
       Model performance was evaluated using accuracy based on an exact match between the answer field and the ground truth. Model outputs were lower-cased and stripped of whitespace before comparison. If no 'answer' field was provided, or if its content was not an exact rule-based match with the correct answer, the output was deemed incorrect. Confidence intervals (CIs) were calculated via bootstrap (95%, N=1000).
     </div>
     <!-- figure 3 -->
-      <img src="/images/overallAccuracy_avgRecall.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
+      <img src="images/overallAccuracy_avgRecall.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
       <div style="text-align: justify; text-justify: inter-word;"> 
         </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 3: </strong> (a) Average model accuracy (and 95% CI) on MedEvidence, overlaid on the percentage of questions where the model provided valid output (additional details in Appendix Section E). (b) Average recall by ground truth treatment outcome effect, aggregated across all models (with overall 95% interval).</p>
       </div>
     <!-- end figure -->
     <!-- figure -->
-      <img src="/images/certainty_and_sla.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
+      <img src="images/certainty_and_sla.svg" alt="Rectangle"  class="border-0" style="display: block; margin: auto; width: 80%; height: auto;" >
       <div style="text-align: justify; text-justify: inter-word;"> 
         </p style="text-align: justify; text-justify: inter-word;"> <strong> Figure 4: </strong> (a) Accuracy as a function of evidence certainty shows a monotonically increasing trend. (b) Accuracy as a function of source concordance, defined as the percentage of relevant sources that agree with the final systematic review (SR) answer, also exhibits a monotonically increasing trend.</p>
       </div>
